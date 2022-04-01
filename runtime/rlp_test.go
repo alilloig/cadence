@@ -19,7 +19,6 @@
 package runtime
 
 import (
-	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -149,10 +148,7 @@ func TestRLPDecodeString(t *testing.T) {
 			)
 			if len(test.expectedErrMsg) > 0 {
 				require.Error(t, err)
-				assert.True(t, strings.HasPrefix(
-					err.Error(),
-					"Execution failed:\nerror: "+test.expectedErrMsg,
-				))
+				assert.ErrorContains(t, err, test.expectedErrMsg)
 			} else {
 				require.NoError(t, err)
 				assert.Equal(t,
@@ -305,10 +301,7 @@ func TestRLPDecodeList(t *testing.T) {
 			)
 			if len(test.expectedErrMsg) > 0 {
 				require.Error(t, err)
-				assert.True(t, strings.HasPrefix(
-					err.Error(),
-					"Execution failed:\nerror: "+test.expectedErrMsg,
-				))
+				assert.ErrorContains(t, err, test.expectedErrMsg)
 			} else {
 				require.NoError(t, err)
 

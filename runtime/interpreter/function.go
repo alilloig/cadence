@@ -28,17 +28,6 @@ import (
 	"github.com/onflow/cadence/runtime/sema"
 )
 
-// Invocation
-//
-type Invocation struct {
-	Self               MemberAccessibleValue
-	Arguments          []Value
-	ArgumentTypes      []sema.Type
-	TypeParameterTypes *sema.TypeParameterTypeOrderedMap
-	GetLocationRange   func() LocationRange
-	Interpreter        *Interpreter
-}
-
 // FunctionValue
 //
 type FunctionValue interface {
